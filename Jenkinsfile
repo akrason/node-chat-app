@@ -7,7 +7,7 @@ tools {nodejs "nd"}
         stage('Build'){
             steps{
                 echo 'Building app...'
-                sh 'npm instlal'
+                sh 'npm install'
             }     
         } 
         stage('Test'){
