@@ -4,10 +4,15 @@ pipeline{
 tools {nodejs "nd"}
     
     stages{
+        stage('Build'){
+            steps{
+                echo 'Building app...'
+                sh 'npm install'
+            }     
+        } 
         stage('Test'){
             steps{
                 echo 'Testing app...'
-                sh 'npm install'
                 sh 'npm run test' 
             }     
         }    
