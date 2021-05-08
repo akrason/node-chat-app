@@ -13,20 +13,17 @@ tools {nodejs "nd"}
         }    
     }
     post{
-        always{
-            junit 'reports/**/*.xml' 
-            step([
-                    $class              :"CloverPublisher",
-                    cloverReportDir     :"build/coverage",
-                    xloverReportFileName:"clover.xml"
-            ])
-        }
         failure{
             emailext attachLog: true,
                 body: "${currentBuild.currentResult}: ${currentBuild.fullDisplayName}",
                 to: 'olakrason1999@gmail.com',
                 subject: "Jenkins build failed ${env.BUILD_NUMBER}"
-            
+        }
+        success{
+            emailext attachLog: true,
+                body: "${currentBuild.currentResult}: ${currentBuild.fullDisplayName}",
+                to: 'olakrason1999@gmail.com',
+                subject: "Jenkins build succeed ${env.BUILD_NUMBER}"
         }
     } 
 
